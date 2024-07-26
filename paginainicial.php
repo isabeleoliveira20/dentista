@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dentinho Feliz</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#cadastroCrianca">Cadastro da Criança</a></li>
+                <li><a href="#espacoInfantil">Espaço Infantil</a></li>
+                <li><a href="#espacoDentista">Espaço Dentista</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="apresentacao">
+        <h1>Seja bem-vindo/a/e ao Dentinho Feliz!</h1>
+        <p>Somos um espaço criativo destinado a crianças. Temos como intenção melhorar experiências antes e depois de uma consulta odontológica, além de poder acompanhar a evolução infantil.</p>
+    </section>
+
+    <section id="cadastroCrianca">
+        <h2>Cadastro da Criança</h2>
+        <form id="cadastroCriancaForm" method="POST" action="processa_cadastro.php">>
+            <div class="form-group">
+                <label for="nomeCrianca">Qual seu nome?</label>
+                <input type="text" id="nomeCrianca" name="nomeCrianca" required>
+            </div>
+            <div class="form-group">
+                <label for="idadeCrianca">Sua idade?</label>
+                <input type="number" id="idadeCrianca" name="idadeCrianca" required>
+            </div>
+            <div class="form-group">
+                <label for="nomeResponsavel">Nome do responsável?</label>
+                <input type="text" id="nomeResponsavel" name="nomeResponsavel" required>
+            </div>
+            <div class="form-group">
+                <label for="emailResponsavel">Email do responsável?</label>
+                <input type="email" id="emailResponsavel" name="emailResponsavel" required>
+            </div>
+            <div class="form-group">
+                <label for="senhaCrianca">Senha?</label>
+                <input type="password" id="senhaCrianca" name="senhaCrianca" required>
+            </div>
+            <button type="submit">Confirmar</button>
+        </form>
+        <div id="mensagemErroCadastro"></div>
+    </section>
+
+    <section id="login">
+        <h2>Login</h2>
+        <form id="loginForm"  method="POST" action="processa_login.php">
+            <div class="form-group">
+                <label for="loginUsuario">Usuário</label>
+                <input type="text" id="loginUsuario" name="loginUsuario" required>
+            </div>
+            <div class="form-group">
+                <label for="loginSenha">Senha</label>
+                <input type="password" id="loginSenha" name="loginSenha" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <div id="mensagemErroLogin"></div>
+    </section>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
