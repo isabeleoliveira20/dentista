@@ -3,12 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const numeroPacientesDiv = document.getElementById('numeroPacientes');
     const tabelaPacientesDiv = document.getElementById('tabelaPacientes');
 
-    // Função para carregar dados do localStorage
     function loadData(key) {
         return JSON.parse(localStorage.getItem(key));
     }
 
-    // Carregar dados da dentista
     const dentista = loadData('dentista');
     if (dentista) {
         const dadosDentistaHtml = `
@@ -25,13 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
         dadosDentistaDiv.innerHTML = '<p>Nenhum dado da dentista encontrado.</p>';
     }
 
-    // Carregar dados dos pacientes
     const paciente = loadData('paciente');
     if (paciente) {
-        // Exibir número de pacientes atendidos
         numeroPacientesDiv.innerHTML = `<h2>Número de Pacientes Atendidos</h2><p>${paciente.consultas.length}</p>`;
 
-        // Exibir tabela de pacientes
         let tabelaPacientesHtml = '<h2>Pacientes Atendidos</h2><table><tr><th>Nome</th><th>CPF</th><th>Casos Clínicos</th></tr>';
         paciente.consultas.forEach((consulta, index) => {
             tabelaPacientesHtml += `

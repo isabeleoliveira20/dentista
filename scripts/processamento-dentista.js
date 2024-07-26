@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Dados da dentista
     const dentista = {
         nome: "Dra. Alice Pereira",
         especialidade: "Odontopediatra",
@@ -12,15 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
         numeroPacientes: 0
     };
 
-    // Armazenar os dados da dentista no localStorage
     localStorage.setItem('dentista', JSON.stringify(dentista));
 
-    // Função para redirecionar dentista para a página de espaço do dentista
     function redirecionarDentista() {
         window.location.href = 'espaco-dentista.html';
     }
 
-    // Adicionar event listener ao formulário de login da dentista
     const loginForm = document.getElementById('loginForm');
     const mensagemErroLogin = document.getElementById('mensagemErroLogin');
 
@@ -30,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const loginCpf = document.getElementById('loginCpf').value;
         const loginSenha = document.getElementById('loginSenha').value;
 
-        // Verificar se os dados de login são válidos
         if (dentista.login === loginCpf && dentista.senha === loginSenha) {
             redirecionarDentista();
         } else {

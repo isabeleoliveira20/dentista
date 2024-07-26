@@ -118,19 +118,19 @@ button:hover {
 }
 
 .avatar-canvas {
-    width: 300px; /* Ajuste o tamanho conforme necessário */
-    height: 400px; /* Ajuste o tamanho conforme necessário */
+    width: 300px; 
+    height: 400px; 
     border: 2px dashed #ccc;
     margin: 20px 0;
     position: relative;
-    overflow: hidden; /* Garante que as imagens não ultrapassem os limites do quadro */
+    overflow: hidden; 
     background-color: #f9f9f9;
 }
 
 .avatar-canvas img {
-    max-width: 100px; /* Ajuste o tamanho conforme necessário */
-    max-height: 100px; /* Ajuste o tamanho conforme necessário */
-    position: absolute; /* Certifique-se de que as imagens sejam posicionadas corretamente */
+    max-width: 100px; 
+    max-height: 100px; 
+    position: absolute; 
     cursor: pointer;
 }
 

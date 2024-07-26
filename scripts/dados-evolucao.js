@@ -3,12 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const dadosDentistaDiv = document.getElementById('dadosDentista');
     const relatorioConsultasDiv = document.getElementById('relatorioConsultas');
 
-    // Função para carregar dados do localStorage
     function loadData(key) {
         return JSON.parse(localStorage.getItem(key));
     }
 
-    // Função para gerar um caso clínico fictício
     function gerarCasoClinico() {
         const casosClinicos = [
             'Canal',
@@ -21,11 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return casosClinicos[Math.floor(Math.random() * casosClinicos.length)];
     }
 
-    // Carregar dados do paciente
     const paciente = loadData('paciente');
 
     if (paciente) {
-        // Exibir dados do paciente
         const dadosPacienteHtml = `
             <h2>Dados do Paciente</h2>
             <p><strong>Nome:</strong> ${paciente.nomeCrianca}</p>
@@ -35,8 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <p><strong>Email do Responsável:</strong> ${paciente.emailResponsavel}</p>
         `;
         dadosPacienteDiv.innerHTML = dadosPacienteHtml;
-
-        // Exibir relatório de consultas
         let consultasHtml = '<h2>Relatório de Consultas</h2>';
         if (paciente.consultas && paciente.consultas.length > 0) {
             paciente.consultas.forEach((consulta, index) => {
@@ -58,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
         relatorioConsultasDiv.innerHTML = '<p>Nenhuma consulta encontrada.</p>';
     }
 
-    // Carregar dados da dentista
     const dentista = loadData('dentista');
     if (dentista) {
         const dadosDentistaHtml = `
