@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const dadosPacienteDiv = document.getElementById('dadosPaciente');
+document.addEventListener('DOMContentLoaded', () => {
+    const dadosCriancaDiv = document.getElementById('dadosCrianca');
     const dadosDentistaDiv = document.getElementById('dadosDentista');
     const relatorioConsultasDiv = document.getElementById('relatorioConsultas');
 
@@ -20,26 +20,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const paciente = loadData('paciente');
+    const dentista = loadData('dentista');
 
     if (paciente) {
-        const dadosPacienteHtml = `
-            <h2>Dados do Paciente</h2>
-            <p><strong>Nome:</strong> ${paciente.nomeCrianca}</p>
-            <p><strong>Idade:</strong> ${paciente.idadeCrianca}</p>
-            <p><strong>CPF:</strong> ${paciente.cpfCrianca}</p>
+        const dadosCriancaHtml = `
+            <h2>Dados da Criança</h2>
+            <p><strong>Nome:</strong> ${paciente.nome}</p>
+            <p><strong>Idade:</strong> ${paciente.idade}</p>
+            <p><strong>CPF:</strong> ${paciente.cpf}</p>
             <p><strong>Nome do Responsável:</strong> ${paciente.nomeResponsavel}</p>
             <p><strong>Email do Responsável:</strong> ${paciente.emailResponsavel}</p>
+            <!-- Senha não exibida -->
         `;
-        dadosPacienteDiv.innerHTML = dadosPacienteHtml;
+        dadosCriancaDiv.innerHTML = dadosCriancaHtml;
+
         let consultasHtml = '<h2>Relatório de Consultas</h2>';
         if (paciente.consultas && paciente.consultas.length > 0) {
             paciente.consultas.forEach((consulta, index) => {
                 consultasHtml += `
                     <div class="consulta">
                         <h3>Consulta ${index + 1}</h3>
-                        <p><strong>Caso Clínico:</strong> ${gerarCasoClinico()}</p>
-                        <p><strong>Pré-atendimento:</strong> ${consulta.preAtendimento}</p>
-                        <p><strong>Pós-atendimento:</strong> ${consulta.postAtendimento}</p>
+                        <p><strong>Caso Clínico:</strong> ${consulta.casoClinico || gerarCasoClinico()}</p>
+                        <p><strong>Pré-atendimento:</strong> ${consulta.preAtendimento || 'Não registrado'}</p>
+                        <p><strong>Pós-atendimento:</strong> ${consulta.postAtendimento || 'Não registrado'}</p>
                     </div>
                 `;
             });
@@ -48,11 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         relatorioConsultasDiv.innerHTML = consultasHtml;
     } else {
-        dadosPacienteDiv.innerHTML = '<p>Nenhum dado de paciente encontrado.</p>';
+        dadosCriancaDiv.innerHTML = '<p>Nenhum dado de criança encontrado.</p>';
         relatorioConsultasDiv.innerHTML = '<p>Nenhuma consulta encontrada.</p>';
     }
 
-    const dentista = loadData('dentista');
     if (dentista) {
         const dadosDentistaHtml = `
             <h2>Dados da Dentista</h2>
@@ -68,3 +70,4 @@ document.addEventListener('DOMContentLoaded', function() {
         dadosDentistaDiv.innerHTML = '<p>Nenhum dado da dentista encontrado.</p>';
     }
 });
+
